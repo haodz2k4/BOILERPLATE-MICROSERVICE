@@ -3,7 +3,7 @@ import { AbstractEntity } from "../../databases/abstract.entity";
 import { UserStatusEnum } from "../enum/status.enum";
 
 @Entity('users')
-export class User extends AbstractEntity{
+export class UserEntity extends AbstractEntity{
 
     @PrimaryGeneratedColumn('uuid')
     id: string;

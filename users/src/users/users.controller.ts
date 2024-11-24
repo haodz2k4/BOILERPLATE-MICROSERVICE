@@ -1,16 +1,16 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateUserReqDto } from './dto/create-user.req.dto';
+import { UpdateUserReqDto } from './dto/update-user.req.dto';
 
 @Controller()
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @MessagePattern('createUser')
-  create(@Payload() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  create(@Payload() createUserReqDto: CreateUserReqDto) {
+    return this.usersService.create(createUserReqDto);
   }
 
   @MessagePattern('findAllUsers')
@@ -24,8 +24,8 @@ export class UsersController {
   }
 
   @MessagePattern('updateUser')
-  update(@Payload() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(updateUserDto.id, updateUserDto);
+  update(@Payload() updateUserReqDto: UpdateUserReqDto) {
+    return this.usersService.update(updateUserReqDto.id, updateUserReqDto);
   }
 
   @MessagePattern('removeUser')
